@@ -31,4 +31,5 @@ namespace PokedexBackOffice.Models
         [ForeignKey("UpdatedBy")]
         public virtual User UpdatedByUser { get; set; }
     }
+
 }

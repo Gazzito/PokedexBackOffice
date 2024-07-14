@@ -58,6 +58,7 @@ namespace PokedexBackOffice.Models
     }
 
 public class PokemonDTO
+
     {
         [Required]
         public int Id { get; set; }
@@ -67,7 +68,9 @@ public class PokemonDTO
         public string Name { get; set; }
 
         [Required]
-        public int RegionId { get; set; }
+        public int RegionId { get; set; } // Inclui o RegionId para criação
+
+        public string ?RegionName { get; set; } // Inclui o RegionName para exibição
 
         [Required]
         public int BaseAttackPoints { get; set; }

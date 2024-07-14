@@ -1,24 +1,39 @@
-using System;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using PokedexBackOffice.Data;
+using PokedexBackOffice.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 
-namespace PokedexBackOffice.Pages.Pokemon
+namespace PokedexBackOffice.Pages.Pokemons
 {
-    public class Index : PageModel
+    public class IndexModel : PageModel
     {
-        private readonly ILogger<Index> _logger;
+        private readonly ApplicationDbContext _context;
 
-        public Index(ILogger<Index> logger)
+        public IndexModel(ApplicationDbContext context)
         {
-            _logger = logger;
+            _context = context;
         }
 
-        public void OnGet()
+        public IList<PokemonDTO> Pokemon { get; set; }
+
+        public async Task OnGetAsync()
         {
+            Pokemon = await _context.Pokemons
+                .Include(p => p.Region) // Inclui a região associada
+                .Select(p => new PokemonDTO
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    RegionName = p.Region.Name, // Seleciona o nome da região
+                    BaseAttackPoints = p.BaseAttackPoints,
+                    BaseHealthPoints = p.BaseHealthPoints,
+                    BaseDefensePoints = p.BaseDefensePoints,
+                    BaseSpeedPoints = p.BaseSpeedPoints
+                })
+                .ToListAsync();
         }
     }
 }

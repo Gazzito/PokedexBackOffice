@@ -7,16 +7,15 @@ using System.Threading.Tasks;
 
 namespace PokedexBackOffice.Pages.Pokemons
 {
-    public class DeleteModel : PageModel
+    public class DetailsModel : PageModel
     {
         private readonly ApplicationDbContext _context;
 
-        public DeleteModel(ApplicationDbContext context)
+        public DetailsModel(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        [BindProperty]
         public PokemonDTO Pokemon { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int id)
@@ -34,29 +33,18 @@ namespace PokedexBackOffice.Pages.Pokemons
             {
                 Id = pokemon.Id,
                 Name = pokemon.Name,
+                RegionId = pokemon.RegionId,
                 RegionName = pokemon.Region.Name,
                 BaseAttackPoints = pokemon.BaseAttackPoints,
                 BaseHealthPoints = pokemon.BaseHealthPoints,
                 BaseDefensePoints = pokemon.BaseDefensePoints,
-                BaseSpeedPoints = pokemon.BaseSpeedPoints
+                BaseSpeedPoints = pokemon.BaseSpeedPoints,
+                CreatedOn = pokemon.CreatedOn,
+                UpdatedOn = pokemon.UpdatedOn,
+                Image = pokemon.Image != null ? Convert.ToBase64String(pokemon.Image) : null
             };
 
             return Page();
-        }
-
-        public async Task<IActionResult> OnPostAsync(int id)
-        {
-            var pokemon = await _context.Pokemons.FindAsync(id);
-
-            if (pokemon == null)
-            {
-                return NotFound();
-            }
-
-            _context.Pokemons.Remove(pokemon);
-            await _context.SaveChangesAsync();
-
-            return RedirectToPage("./Index");
         }
     }
 }

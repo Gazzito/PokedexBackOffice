@@ -1,11 +1,39 @@
 @page
-@model PokedexBackOffice.Pages.Pokemon.Index
-@{
-    ViewData["Title"] = "Index";
+@model PokedexBackOffice.Pages.Pokemons.IndexModel
+
+<h1>Pokemons</h1>
+
+<p>
+    <a asp-page="./Create_Page">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Region</th>
+            <th>Base Attack</th>
+            <th>Base Health</th>
+            <th>Base Defense</th>
+            <th>Base Speed</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Pokemon)
+{
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.RegionName</td> <!-- Exibe o nome da região -->
+            <td>@item.BaseAttackPoints</td>
+            <td>@item.BaseHealthPoints</td>
+            <td>@item.BaseDefensePoints</td>
+            <td>@item.BaseSpeedPoints</td>
+            <td>
+                <a asp-page="./Edit_Page" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details_Page" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete_Page" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
 }
-
-<h1>@ViewData["Title"]</h1>
-
-<div>
-    olaaaaaaaaaaaaa
-</div>
+    </tbody>
+</table>

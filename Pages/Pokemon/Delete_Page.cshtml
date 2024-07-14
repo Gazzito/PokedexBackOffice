@@ -1,11 +1,54 @@
-@page
-@model PokedexBackOffice.Pages.Pokemon.Delete_Page
-@{
-    ViewData["Title"] = "Delete_Page";
-}
+@page "{id:int}"
+@model PokedexBackOffice.Pages.Pokemons.DeleteModel
 
-<h1>@ViewData["Title"]</h1>
+<h1>Delete Pokemon</h1>
 
+<h4>Are you sure you want to delete this Pokemon?</h4>
 <div>
-    
+    <h4>@Model.Pokemon.Name</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Name
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Pokemon.Name
+        </dd>
+        <dt class="col-sm-2">
+            Region
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Pokemon.RegionName
+        </dd>
+        <dt class="col-sm-2">
+            Base Attack Points
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Pokemon.BaseAttackPoints
+        </dd>
+        <dt class="col-sm-2">
+            Base Health Points
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Pokemon.BaseHealthPoints
+        </dd>
+        <dt class="col-sm-2">
+            Base Defense Points
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Pokemon.BaseDefensePoints
+        </dd>
+        <dt class="col-sm-2">
+            Base Speed Points
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Pokemon.BaseSpeedPoints
+        </dd>
+    </dl>
+
+    <form method="post">
+        <input type="hidden" asp-for="Pokemon.Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-page="./Index" class="btn btn-secondary">Cancel</a>
+    </form>
 </div>

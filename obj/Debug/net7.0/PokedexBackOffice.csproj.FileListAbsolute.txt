@@ -40,3 +40,4 @@ C:\Users\Telmo\PokedexBackOffice\bin\Debug\net7.0\Npgsql.dll
 C:\Users\Telmo\PokedexBackOffice\bin\Debug\net7.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Users\Telmo\PokedexBackOffice\bin\Debug\net7.0\System.CodeDom.dll
 C:\Users\Telmo\PokedexBackOffice\obj\Debug\net7.0\PokedexBackOffice.csproj.CopyComplete
+C:\Users\Telmo\PokedexBackOffice\obj\Debug\net7.0\PokedexBackOffice.sourcelink.json

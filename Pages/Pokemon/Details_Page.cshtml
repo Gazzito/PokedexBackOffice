@@ -1,0 +1,72 @@
+@page "{id:int}"
+@model PokedexBackOffice.Pages.Pokemons.DetailsModel
+
+<h1>Details for @Model.Pokemon.Name</h1>
+
+<div>
+    <h4>Pokemon</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pokemon.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pokemon.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pokemon.RegionId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pokemon.RegionName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pokemon.BaseAttackPoints)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pokemon.BaseAttackPoints)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pokemon.BaseHealthPoints)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pokemon.BaseHealthPoints)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pokemon.BaseDefensePoints)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pokemon.BaseDefensePoints)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pokemon.BaseSpeedPoints)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pokemon.BaseSpeedPoints)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pokemon.CreatedOn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pokemon.CreatedOn)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pokemon.UpdatedOn)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pokemon.UpdatedOn)
+        </dd>
+        <dt class="col-sm-2">
+            Image
+        </dt>
+        <dd class="col-sm-10">
+            @if (Model.Pokemon.Image != null)
+            {
+                <img src="data:image/png;base64,@Model.Pokemon.Image" alt="Pokemon Image" style="max-width: 200px; max-height: 200px;" />
+            }
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Pokemon.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>
