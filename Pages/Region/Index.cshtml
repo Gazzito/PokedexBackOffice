@@ -1,0 +1,29 @@
+@page
+@model PokedexBackOffice.Pages.Regions.IndexModel
+
+<h1>Regions</h1>
+
+<p>
+    <a asp-page="./Create_Page" class="btn btn-primary">Create New Region</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var region in Model.Regions)
+{
+        <tr>
+            <td>@region.Name</td>
+            
+            <td>
+                <a asp-page="./Delete_Page" asp-route-id="@region.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

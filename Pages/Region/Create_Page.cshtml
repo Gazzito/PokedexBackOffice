@@ -1,0 +1,29 @@
+@page
+@model PokedexBackOffice.Pages.Regions.CreateModelRegion
+
+<h1>Create Region</h1>
+
+<h4>Region</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Region.Name" class="control-label"></label>
+                        <input asp-for="Region.Name" class="form-control" />
+                        <span asp-validation-for="Region.Name" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mt-4">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+
+}
