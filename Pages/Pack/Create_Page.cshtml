@@ -1,0 +1,101 @@
+@page
+@model PokedexBackOffice.Pages.Packs.CreateModelPack
+
+<h1>Create Pack</h1>
+
+<h4>Pack</h4>
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <form method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Pack.Name" class="control-label"></label>
+                        <input asp-for="Pack.Name" class="form-control" />
+                        <span asp-validation-for="Pack.Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pack.Price" class="control-label"></label>
+                        <input asp-for="Pack.Price" class="form-control" />
+                        <span asp-validation-for="Pack.Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pack.BronzeChance" class="control-label"></label>
+                        <input asp-for="Pack.BronzeChance" class="form-control" />
+                        <span asp-validation-for="Pack.BronzeChance" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pack.SilverChance" class="control-label"></label>
+                        <input asp-for="Pack.SilverChance" class="form-control" />
+                        <span asp-validation-for="Pack.SilverChance" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pack.GoldChance" class="control-label"></label>
+                        <input asp-for="Pack.GoldChance" class="form-control" />
+                        <span asp-validation-for="Pack.GoldChance" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label asp-for="Pack.PlatinumChance" class="control-label"></label>
+                        <input asp-for="Pack.PlatinumChance" class="form-control" />
+                        <span asp-validation-for="Pack.PlatinumChance" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pack.DiamondChance" class="control-label"></label>
+                        <input asp-for="Pack.DiamondChance" class="form-control" />
+                        <span asp-validation-for="Pack.DiamondChance" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pack.TotalBought" class="control-label"></label>
+                        <input asp-for="Pack.TotalBought" class="form-control" />
+                        <span asp-validation-for="Pack.TotalBought" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pack.CreatedOn" class="control-label"></label>
+                        <input asp-for="Pack.CreatedOn" class="form-control" />
+                        <span asp-validation-for="Pack.CreatedOn" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Pack.CreatedBy" class="control-label"></label>
+                        <input asp-for="Pack.CreatedBy" class="form-control" />
+                        <span asp-validation-for="Pack.CreatedBy" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group mt-4">
+                        <label asp-for="Upload" class="control-label"></label>
+                        <input id="fileUpload" asp-for="Upload" class="form-control-file" type="file" />
+                        <span asp-validation-for="Upload" class="text-danger"></span>
+                    </div>
+                    <div class="form-group mt-4 w-50">
+                        <img id="previewImage" src="data:image/png;base64,@Model.Pack.Image" alt="Preview" class="img-thumbnail" style="display:block;" />
+                    </div>
+                </div>
+            </div>
+            <div class="form-group mt-4">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+        $(document).ready(function() {
+            $('#fileUpload').change(function() {
+                var input = this;
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        $('#previewImage').attr('src', e.target.result);
+                        $('#previewImage').show();
+                    }
+                    reader.readAsDataURL(input.files[0]);
+                }
+            });
+        });
+    </script>
+}

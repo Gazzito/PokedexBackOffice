@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace PokedexBackOffice.Pages.Pokemons
 {
-    public class DetailsModel : PageModel
+    public class DetailsModelPokemon : PageModel
     {
         private readonly ApplicationDbContext _context;
 
-        public DetailsModel(ApplicationDbContext context)
+        public DetailsModelPokemon(ApplicationDbContext context)
         {
             _context = context;
         }

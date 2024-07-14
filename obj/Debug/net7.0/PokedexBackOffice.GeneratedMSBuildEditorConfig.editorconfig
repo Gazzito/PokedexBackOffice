@@ -26,6 +26,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Telmo/PokedexBackOffice/Pages/Pack/Create_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFja1xDcmVhdGVfUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Telmo/PokedexBackOffice/Pages/Pack/Delete_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFja1xEZWxldGVfUGFnZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Telmo/PokedexBackOffice/Pages/Pack/Details_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFja1xEZXRhaWxzX1BhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Telmo/PokedexBackOffice/Pages/Pack/Edit_Page.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFja1xFZGl0X1BhZ2UuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Telmo/PokedexBackOffice/Pages/Pack/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUGFja1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Telmo/PokedexBackOffice/Pages/Pokemon/Create_Page.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9rZW1vblxDcmVhdGVfUGFnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -44,10 +64,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Telmo/PokedexBackOffice/Pages/Pokemon/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUG9rZW1vblxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Telmo/PokedexBackOffice/Pages/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJpdmFjeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Telmo/PokedexBackOffice/Pages/Shared/_ValidationScriptsPartial.cshtml]

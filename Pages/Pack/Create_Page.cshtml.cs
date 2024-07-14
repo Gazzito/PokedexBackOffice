@@ -1,39 +1,33 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using PokedexBackOffice.Data;
 using PokedexBackOffice.Models;
+using PokedexBackOffice.Data;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
-namespace PokedexBackOffice.Pages.Pokemons
+namespace PokedexBackOffice.Pages.Packs
 {
-    public class CreateModelPokemon : PageModel
+    public class CreateModelPack : PageModel
     {
         private readonly ApplicationDbContext _context;
 
-        public CreateModelPokemon(ApplicationDbContext context)
+        public CreateModelPack(ApplicationDbContext context)
         {
             _context = context;
         }
 
         [BindProperty]
-        public PokemonDTO Pokemon { get; set; } = new PokemonDTO();
+        public PackDTO Pack { get; set; } = new PackDTO();
 
         [BindProperty]
         public IFormFile Upload { get; set; }
 
-        public SelectList Regions { get; set; }
-
         public IActionResult OnGet()
         {
-            Regions = new SelectList(_context.Regions.ToList(), "Id", "Name");
-            Pokemon = new PokemonDTO(); // Inicializa a propriedade Pokemon aqui
+            Pack = new PackDTO(); // Inicializa a propriedade Pack aqui
             return Page();
         }
 
@@ -41,7 +35,6 @@ namespace PokedexBackOffice.Pages.Pokemons
         {
             if (!ModelState.IsValid)
             {
-                Regions = new SelectList(_context.Regions.ToList(), "Id", "Name");
                 return Page();
             }
 
@@ -56,17 +49,19 @@ namespace PokedexBackOffice.Pages.Pokemons
                 return Page();
             }
 
-            var pokemon = new Models.Pokemon
+            var pack = new Models.Pack
             {
-                Name = Pokemon.Name,
-                RegionId = Pokemon.RegionId,
-                BaseAttackPoints = Pokemon.BaseAttackPoints,
-                BaseHealthPoints = Pokemon.BaseHealthPoints,
-                BaseDefensePoints = Pokemon.BaseDefensePoints,
-                BaseSpeedPoints = Pokemon.BaseSpeedPoints,
+                Name = Pack.Name,
+                Price = Pack.Price,
+                BronzeChance = Pack.BronzeChance,
+                SilverChance = Pack.SilverChance,
+                GoldChance = Pack.GoldChance,
+                PlatinumChance = Pack.PlatinumChance,
+                DiamondChance = Pack.DiamondChance,
+                TotalBought = Pack.TotalBought,
                 CreatedOn = DateTime.UtcNow,
                 CreatedBy = systemUser.Id,
-                UpdatedOn = Pokemon.UpdatedOn?.ToUniversalTime(),
+                UpdatedOn = Pack.UpdatedOn?.ToUniversalTime(),
                 UpdatedBy = systemUser.Id
             };
 
@@ -75,15 +70,14 @@ namespace PokedexBackOffice.Pages.Pokemons
                 using (var memoryStream = new MemoryStream())
                 {
                     await Upload.CopyToAsync(memoryStream);
-                    pokemon.Image = memoryStream.ToArray();
+                    pack.Image = memoryStream.ToArray();
                 }
             }
 
-            _context.Pokemons.Add(pokemon);
+            _context.Packs.Add(pack);
             await _context.SaveChangesAsync();
 
             return RedirectToPage("./Index");
         }
     }
-
 }

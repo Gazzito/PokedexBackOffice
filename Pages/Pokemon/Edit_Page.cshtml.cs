@@ -11,12 +11,12 @@ using System.IO;
 
 namespace PokedexBackOffice.Pages.Pokemons
 {
-    public class EditModel : PageModel
+    public class EditModelPokemon : PageModel
     {
         private readonly ApplicationDbContext _context;
-        private readonly ILogger<EditModel> _logger;
+        private readonly ILogger<EditModelPokemon> _logger;
 
-        public EditModel(ApplicationDbContext context, ILogger<EditModel> logger)
+        public EditModelPokemon(ApplicationDbContext context, ILogger<EditModelPokemon> logger)
         {
             _context = context;
             _logger = logger;

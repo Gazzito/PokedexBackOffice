@@ -1,0 +1,43 @@
+@page
+@model PokedexBackOffice.Pages.Packs.IndexModelPack
+
+<h1>Packs</h1>
+
+<p>
+    <a asp-page="./Create_Page">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Bronze Chance</th>
+            <th>Silver Chance</th>
+            <th>Gold Chance</th>
+            <th>Platinum Chance</th>
+            <th>Diamond Chance</th>
+            <th>Total Bought</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Packs)
+{
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Price</td>
+            <td>@item.BronzeChance</td>
+            <td>@item.SilverChance</td>
+            <td>@item.GoldChance</td>
+            <td>@item.PlatinumChance</td>
+            <td>@item.DiamondChance</td>
+            <td>@item.TotalBought</td>
+            <td>
+                <a asp-page="./Edit_Page" asp-route-id="@item.Id">Edit</a> |
+                <a asp-page="./Details_Page" asp-route-id="@item.Id">Details</a> |
+                <a asp-page="./Delete_Page" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

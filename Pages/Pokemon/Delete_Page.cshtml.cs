@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace PokedexBackOffice.Pages.Pokemons
 {
-    public class DeleteModel : PageModel
+    public class DeleteModelPokemon : PageModel
     {
         private readonly ApplicationDbContext _context;
 
-        public DeleteModel(ApplicationDbContext context)
+        public DeleteModelPokemon(ApplicationDbContext context)
         {
             _context = context;
         }
