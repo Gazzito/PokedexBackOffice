@@ -8,6 +8,13 @@
     <hr />
     <dl class="row">
         <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Pack.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Pack.Id)
+        </dd>
+
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Pack.Name)
         </dt>
         <dd class="col-sm-10">
@@ -73,12 +80,46 @@
         <dd class="col-sm-10">
             @if (Model.Pack.Image != null)
             {
-                <img src="data:image/png;base64,@Model.Pack.Image" alt="Pack Image" style="max-width: 200px; max-height: 200px;" />
+                <img src="data:image/png;base64,@Model.Pack.Image" alt="Pack Image"
+                    style="max-width: 200px; max-height: 200px;" />
             }
         </dd>
     </dl>
 </div>
-<div>
-    <a asp-page="./Edit_Page" asp-route-id="@Model.Pack.Id">Edit</a> |
-    <a asp-page="./Index_Page">Back to List</a>
-</div>
+
+
+
+<h4 class="mt-5">Associate Pokemon</h4>
+<form method="post" asp-page-handler="AssociatePokemon">
+    <div class="form-group mt-4">
+        <label for="PokemonId">Pokemon</label>
+        <select asp-for="PokemonId" class="form-control" asp-items="Model.Pokemons"></select>
+    </div>
+    <input type="hidden" asp-for="Pack.Id" />
+    <button type="submit" class="btn btn-primary mt-4">Add Pokemon</button>
+</form>
+
+<h4 class="mt-5">Associated Pokemons</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Pokemon Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pokemon in Model.AssociatedPokemons)
+        {
+            <tr>
+                <td>@pokemon.Name</td>
+                <td>
+                    <form method="post" asp-page-handler="RemovePokemon" style="display:inline;">
+                        <input type="hidden" name="pokemonId" value="@pokemon.Id" />
+                        <input type="hidden" asp-for="Pack.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
